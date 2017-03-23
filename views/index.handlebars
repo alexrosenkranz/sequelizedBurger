@@ -14,10 +14,10 @@
       <ul class="list-group">
       {{#each burgers}} {{#unless this.devoured}}
       <li class="list-group-item">
-{{this.burger_name}}
+  <h3>{{this.burger_name}}</h3>
   <form action="/{{this.id}}" method="POST" class="form-inline">
     <input type="hidden" name="id" value="{{this.id}}">
-    <input type="text" name="customer" placeholder="Who's eating this burger?"/> 
+    <input type="text" class="form-control" name="customer" placeholder="Who's eating this burger?"/> 
     <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-cutlery" aria-hidden="true"></i> DEVOUR IT!</button>
   </form>
 </li>
@@ -37,7 +37,8 @@
       <ul class="list-group">
         {{#each burgers}} {{#if this.devoured}}
         <li class="list-group-item">
-          {{this.burger_name}} - Devoured By <strong>{{this.Customer.name}}</strong>
+          <h3>{{this.burger_name}}</h3>
+          <small>Devoured By <strong>{{this.Customer.name}}</strong></small>
           
         </li>
         {{/if}} {{/each}}
