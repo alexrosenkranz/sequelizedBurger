@@ -1,0 +1,37 @@
+{
+  "name": "burger",
+  "version": "1.0.0",
+  "description": "Burger Eating App with Node, Express, Handlebars, Sequelize & MySQL",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexrosenkranz/sequelizedBurger.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "handlebars",
+    "mysql",
+    "sequelize"
+  ],
+  "author": "Alex Rosenkranz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexrosenkranz/sequelizedBurger/issues"
+  },
+  "homepage": "https://github.com/alexrosenkranz/sequelizedBurger#readme",
+  "dependencies": {
+    "body": "^5.1.0",
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "express-handlebars": "^3.0.0",
+    "method-override": "^2.3.7",
+    "moment": "^2.18.1",
+    "mysql": "^2.13.0",
+    "parser": "^0.1.4",
+    "sequelize": "^3.30.2"
+  }
+}
