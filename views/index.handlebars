@@ -1,24 +1,31 @@
 <div class="jumbotron text-center">
   <h1>Eat Da Burger</h1>
   <p>Add what type of burger you want to eat next, then DEVOUR IT.</p>
-  <form action="/" method="POST" class="form-inline">
-  <input name="name" type="text" class="form-control input-lg" placeholder="What type of burger?"></input>
-  <input type="submit" class="btn btn-primary btn-lg"></input>
+  {{!--action="/" method="POST"--}}
+  <form class="form-inline burger-form">
+    <div class="form-group ">
+  <input name="name" type="text" class="form-control input-lg burger-name" placeholder="What type of burger?"></input>
+  
+  <button class="btn btn-primary btn-lg burger-submit">Submit</button>
+  </div>
 </form>
 </div>
 
-<div class="col-md-6 col-xs-12">
-  <div class="panel panel-default">
+<div class="col-md-6 col-xs-12 text-center">
+  <div class="panel">
     <div class="panel-heading"><h2 class="panel-title">Burgers Ripe For The Eatin'.</h2></div>
     <div class="panel-body">
       <ul class="list-group">
       {{#each burgers}} {{#unless this.devoured}}
       <li class="list-group-item">
   <h3>{{this.burger_name}}</h3>
-  <form action="/{{this.id}}" method="POST" class="form-inline">
-    <input type="hidden" name="id" value="{{this.id}}">
-    <input type="text" class="form-control" name="customer" placeholder="Who's eating this burger?"/> 
-    <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-cutlery" aria-hidden="true"></i> DEVOUR IT!</button>
+  {{!-- action="/{{this.id}}" method="POST"--}}
+  <form class="devour-form">
+    <div class="form-group">
+    <input type="hidden" name="id" class="burger_id" value="{{this.id}}">
+    <input type="text" class="form-control input-lg customer" name="customer" placeholder="Who's eating this burger?"/> 
+    <button type="submit" class="btn btn-block btn-danger devour-submit"><i class="fa fa-cutlery" aria-hidden="true"></i> DEVOUR IT!</button>
+    </div>
   </form>
 </li>
 {{/unless}} {{/each}}
@@ -28,18 +35,17 @@
 </div>
 
 
-<div class="col-md-6 col-xs-12">
-  <div class="panel panel-default">
+<div class="col-md-6 col-xs-12 text-center">
+  <div class="panel">
     <div class="panel-heading">
-      <h2 class="panel-title">Burgers Devoured.</h2>
+      <h2 class="panel-title">Burgers<br/>Devoured.</h2>
     </div>
     <div class="panel-body">
       <ul class="list-group">
         {{#each burgers}} {{#if this.devoured}}
         <li class="list-group-item">
           <h3>{{this.burger_name}}</h3>
-          <small>Devoured By <strong>{{this.Customer.name}}</strong></small>
-          
+          <p>Devoured By <strong>{{this.Customer.name}}</strong></p>
         </li>
         {{/if}} {{/each}}
       </ul>

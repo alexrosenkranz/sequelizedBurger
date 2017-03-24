@@ -1,9 +1,7 @@
 var express = require("express");
 var moment = require('moment');
 var Models = require('../models');
-
 var router = express.Router();
-
 
 // Create all our routes and set up logic within those routes where required.
 router.get('/', function(req, res) {
@@ -12,7 +10,6 @@ router.get('/', function(req, res) {
       model: Models.Customer,
     }],
   }).then((results) => {
-   
     var burgers = {
       burgers: results
     }
@@ -23,29 +20,36 @@ router.get('/', function(req, res) {
 
 
 router.post("/", function(req, res) {
+  console.log("Burger is: " + req.body.burgerName);
     Models.Burger.create({
-    burger_name: req.body.name,
+    burger_name: req.body.burgerName,
   }).then(function(results) {
-    //   res.json(results);
     console.log(results);
     res.redirect('/');
+  }).catch(function(err){
+    console.log("This isn't a valid name!");
+    res.send(err);
   });
 })
 
 router.post("/:id", function(req, res) {
-     Models.Customer.create({
-    name: req.body.customer,
-    burger_id: req.params.id
+  
+  Models.Customer.create({
+    name: req.body.customerName,
+    burger_id: req.body.burgerId
   }).then(function() {
     Models.Burger.update({
         devoured: true
     }, {
         where: {
-            id: req.params.id
+            id: req.body.burgerId
         }
     }).then(function(results){
         res.redirect('/');
-    })
+    });
+  }).catch(function(err){
+    console.log("This isn't a valid name!");
+    res.send(err);
   });
 })
 
